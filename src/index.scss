@@ -20,6 +20,7 @@
   height: 530px;
   background-color: white;
   box-shadow: 1px 2px 20px #f3f3f3;
+  display: flex;
 }
 
 .menu {
@@ -28,6 +29,11 @@
   height: 100%;
   padding: 60px 20px;
   box-sizing: border-box;
+}
+
+.tasks {
+  padding: 56px;
+  flex-grow: 1;
 }
 
 .field {
