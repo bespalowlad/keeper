@@ -59,6 +59,7 @@
   padding: 10px 20px;
   color: white;
   outline: none;
+  cursor: pointer;
 
   &:hover {
     background-color: darken(#4DD599, 5%);
@@ -66,5 +67,24 @@
 
   &:active {
     background-color: darken(#4DD599, 10%);
+  }
+
+  &:disabled {
+    background: #b3b6b5;
+    color: #7d7b7b;
+    pointer-events: none;
+  }
+
+  &-gray {
+    background: #F4F6F8;
+    color: #9C9C9C;
+
+    &:hover {
+      background: darken(#F4F6F8, 5%);
+    }
+
+    &:active {
+      background: darken(#F4F6F8, 10%);
+    }
   }
 }

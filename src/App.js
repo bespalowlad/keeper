@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import { List, Addlist, Tasks } from './components'
 
 function App() {
   const [lists, setLists] = useState(null);
   const [colors, setColors] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +31,32 @@ function App() {
     setLists(lists.filter(item => item.id !== id))
   }
 
+  const activeItemControl = (item) => {
+    setActiveItem(item);
+  }
+
+  const onEditTitleList = (id, title) => {
+    const newLists = lists.map(item => {
+      if (item.id === id) {
+        item.name = title;
+      }
+      return item;
+    });
+
+    setLists(newLists);
+  }
+
+  const onCreateTask = (id, task) => {
+    const newLists = lists.map((listItem) => {
+      if (listItem.id === id) {
+        listItem.tasks = [...listItem.tasks, task];
+      }
+      return listItem;
+    })
+
+    setLists(newLists);
+  }
+
   return (
     <div className="app">
       <div className="todo">
@@ -49,6 +77,8 @@ function App() {
           {lists ? <List
             items={lists}
             onRemove={onRemove}
+            onClickItem={activeItemControl}
+            activeItem={activeItem}
             isRemovable
           /> :
             ('Загрузка...')
@@ -58,7 +88,7 @@ function App() {
         </div>
 
         <div className="tasks">
-          {lists && <Tasks list={lists[1]} />}
+          {lists && activeItem && <Tasks list={activeItem} onEditTitleList={onEditTitleList} onCreateTask={onCreateTask} />}
         </div>
       </div>
     </div>

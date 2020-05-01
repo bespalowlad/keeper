@@ -8,7 +8,7 @@ import './List.scss'
 
 import removeSVG from '../../assets/images/remove.svg';
 
-const List = ({ items, isRemovable, onClick, onRemove }) => {
+const List = ({ items, isRemovable, onClick, onRemove, onClickItem, activeItem }) => {
 
     const beforeRemove = async ({ id, name }) => {
         if (window.confirm(`Вы действительно хотите удалить ${name}?`)) {
@@ -19,12 +19,16 @@ const List = ({ items, isRemovable, onClick, onRemove }) => {
 
     return <ul onClick={onClick} className="list">
         {items.map((item, index) => (
-            <li className={classNames(item.className, { 'active': item.active })} key={index}>
+            <li
+                onClick={onClickItem ? () => onClickItem(item) : null}
+                className={classNames(item.className, { 'active': activeItem && activeItem.id === item.id })}
+                key={index}
+            >
                 {item.icon ?
                     item.icon :
                     <Badge color={item.color} />
                 }
-                <p>{item.name}</p>
+                <p>{item.name} {item.tasks && `(${item.tasks.length})`}</p>
                 {isRemovable && <img src={removeSVG} onClick={() => beforeRemove(item)} className="remove-btn" alt="Remove" />}
             </li>
         ))}
