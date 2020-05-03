@@ -1,0 +1,104 @@
+.task {
+    display: flex;
+    align-items: center;
+
+    & + & {
+        margin-top: 15px;
+    }
+
+    &:hover {
+        .task-control {
+            opacity: 1;
+        }
+    }
+
+    input[type=checkbox] {
+        display: none;
+
+        &:checked {
+            & + .check {
+                background: #4DD599;
+                border: 2px solid #4DD599;
+
+                svg {
+                    opacity: 1;
+                }
+
+                svg path {
+                    stroke: white;
+                }
+            }
+        }
+    }
+
+    .check {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #E8E8E8;
+        box-sizing: border-box;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+            opacity: 0;
+        }
+
+        &:hover {
+            background: #F2F2F2;
+            border: 2px solid #F2F2F2;
+    
+            svg {
+                opacity: 1;
+            }
+    
+            svg path {
+                stroke: #b3b3b3;
+            }
+        }
+    }
+
+    &-text {
+        margin-left: 15px;
+        border: none;
+        flex-grow: 1;
+    }
+
+    &-control {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+    }
+
+    &-edit,
+    &-remove {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+
+        &:hover {
+            background: #ececec;
+
+            img {
+                opacity: .6;
+            }
+        }
+
+        img {
+            opacity: .2;
+            max-width: 10px;
+        }
+    }
+
+    &-remove {
+        margin-left: 5px;
+    }
+}

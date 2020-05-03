@@ -35,7 +35,8 @@ const AddButtonList = ({ colors, onAddList }) => {
 
         onAddList({
             ...data,
-            color: { ...colors.find(c => c.id === selectedColor) }
+            color: { ...colors.find(c => c.id === selectedColor), },
+            tasks: []
         });
 
         onClose();

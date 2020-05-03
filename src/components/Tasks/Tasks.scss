@@ -1,25 +1,33 @@
 .tasks {
 
-    h2 {
+    &-list {
+        & + .tasks-list {
+            margin-top: 40px;
+        }
+    }
+
+    &-empty {
         font-family: Montserrat;
         font-style: normal;
-        font-weight: bold;
         font-size: 22px;
         color: #C9D1D3;
-        text-align: center;
     }
     
     &-title {
-        font-family: Montserrat;
-        font-style: normal;
-        line-height: normal;
-        font-weight: bold;
-        font-size: 32px;
-        color: #64C4ED;
         padding-bottom: 20px;
         border-bottom: 1px solid #f2f2f2;
         margin-bottom: 30px;
+        display: flex;
 
+        h2 {
+            font-family: Montserrat;
+            font-style: normal;
+            line-height: normal;
+            font-weight: bold;
+            font-size: 32px;
+            color: #64C4ED;
+        }
+        
         img {
             margin-left: 15px;
             opacity: .2;
@@ -33,68 +41,6 @@
         input {
             height: 100%;
         }
-    }
-
-    &-item {
-        display: flex;
-    
-        & + .tasks-item {
-            margin-top: 15px;
-        }
-    
-        input[type=checkbox] {
-            display: none;
-    
-            &:checked {
-                & + .check {
-                    background: #4DD599;
-                    border: 2px solid #4DD599;
-    
-                    svg {
-                        opacity: 1;
-                    }
-    
-                    svg path {
-                        stroke: white;
-                    }
-                }
-            }
-        }
-    
-        .check {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid #E8E8E8;
-            box-sizing: border-box;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-    
-            svg {
-                opacity: 0;
-            }
-    
-            &:hover {
-                background: #F2F2F2;
-                border: 2px solid #F2F2F2;
-        
-                svg {
-                    opacity: 1;
-                }
-        
-                svg path {
-                    stroke: #b3b3b3;
-                }
-            }
-        }
-    }
-
-    &-text {
-        margin-left: 15px;
-        border: none;
     }
 
     .create-task {

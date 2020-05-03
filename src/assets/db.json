@@ -19,6 +19,11 @@
       "name": "Курс по ReactJS ToDo",
       "colorId": 7,
       "id": 7
+    },
+    {
+      "name": "test",
+      "colorId": 8,
+      "id": 8
     }
   ],
   "tasks": [
@@ -71,18 +76,6 @@
       "id": 8
     },
     {
-      "listId": 1,
-      "text": "123",
-      "completed": false,
-      "id": 9
-    },
-    {
-      "listId": 2,
-      "text": "222",
-      "completed": true,
-      "id": 12
-    },
-    {
       "listId": 7,
       "text": "Сделали сайдбар",
       "completed": true,
@@ -102,33 +95,15 @@
     },
     {
       "listId": 1,
-      "text": "test",
+      "text": "test123",
       "completed": false,
       "id": 18
     },
     {
-      "listId": 1,
-      "text": "test 2",
+      "listId": 8,
+      "text": "test 1",
       "completed": false,
       "id": 19
-    },
-    {
-      "listId": 1,
-      "text": "test 3",
-      "completed": false,
-      "id": 20
-    },
-    {
-      "listId": 1,
-      "text": "test 4",
-      "completed": false,
-      "id": 21
-    },
-    {
-      "listId": 1,
-      "text": "test 5",
-      "completed": false,
-      "id": 22
     }
   ],
   "colors": [

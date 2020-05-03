@@ -21,12 +21,12 @@ const CreateTask = ({ list, onCreateTask }) => {
         setIsLoading(true);
 
         try {
-            const newTask = await axios.post('http://localhost:3001/tasks', {
+            const { data } = await axios.post('http://localhost:3001/tasks', {
                 listId: list.id,
                 text: inputValue,
                 completed: false
             });
-            onCreateTask(list.id, newTask);
+            onCreateTask(list.id, data);
             toggleFormVisible();
         } catch (error) {
             alert('Уппс! Произошла ошибка')
