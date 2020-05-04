@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { addMenuItem } from '../../api'
 
 import List from '../List';
 import Badge from '../Badge';
@@ -31,7 +31,7 @@ const AddButtonList = ({ colors, onAddList }) => {
 
         setIsLoading(true);
 
-        const { data } = await axios.post('http://localhost:3001/lists', { name: inputValue, colorId: selectedColor })
+        const { data } = await addMenuItem({ name: inputValue, colorId: selectedColor });
 
         onAddList({
             ...data,

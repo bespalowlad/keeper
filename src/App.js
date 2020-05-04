@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import classNames from 'classnames'
 import { Route, useHistory } from 'react-router-dom'
 
 import { List, Addlist, Tasks } from './components'
+import { fetchLists, fetchColors } from './api'
 
 function App() {
   const [lists, setLists] = useState(null);
   const [colors, setColors] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
   let history = useHistory();
+  console.log('histiry: ', history)
 
   useEffect(() => {
     const fetchData = async () => {
-      const lists = await axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks')
+      const lists = await fetchLists();
       setLists(lists.data);
 
-      const colors = await axios.get('http://localhost:3001/colors');
+      const colors = await fetchColors();
       setColors(colors.data);
     }
 
@@ -96,6 +98,22 @@ function App() {
     setLists(newList);
   }
 
+  const onComplete = (listId, taskId) => {
+    const newList = lists.map(list => {
+      if (list.id === listId) {
+        list.tasks = list.tasks.map(task => {
+          if (task.id === taskId) {
+            task.completed = !task.completed;
+          }
+          return task
+        })
+      }
+      return list
+    })
+
+    setLists(newList)
+  }
+
   return (
     <div className="app">
       <div className="todo">
@@ -127,31 +145,35 @@ function App() {
           <Addlist colors={colors} onAddList={onAddList} />
         </div>
 
-        <div className="tasks">
-          <Route exact path='/'>
-            {lists && lists.map(list => (
-              <Tasks
-                key={list.id}
-                list={list}
-                onEditTitleList={onEditTitleList}
-                onCreateTask={onCreateTask}
-                onRemoveTask={onRemoveTask}
-                onEditTask={onEditTask}
-              />
-            ))}
-          </Route>
+        <div className="content">
+          <div className={classNames('tasks', { 'multi-topics': history.location.pathname === '/' })}>
+            <Route exact path='/'>
+              {lists && lists.map(list => (
+                <Tasks
+                  key={list.id}
+                  list={list}
+                  onEditTitleList={onEditTitleList}
+                  onCreateTask={onCreateTask}
+                  onRemoveTask={onRemoveTask}
+                  onEditTask={onEditTask}
+                  onComplete={onComplete}
+                />
+              ))}
+            </Route>
 
-          <Route path='/lists/:id'>
-            {lists &&
-              activeItem &&
-              <Tasks
-                list={activeItem}
-                onEditTitleList={onEditTitleList}
-                onCreateTask={onCreateTask}
-                onRemoveTask={onRemoveTask}
-                onEditTask={onEditTask}
-              />}
-          </Route>
+            <Route path='/lists/:id'>
+              {lists &&
+                activeItem &&
+                <Tasks
+                  list={activeItem}
+                  onEditTitleList={onEditTitleList}
+                  onCreateTask={onCreateTask}
+                  onRemoveTask={onRemoveTask}
+                  onEditTask={onEditTask}
+                  onComplete={onComplete}
+                />}
+            </Route>
+          </div>
         </div>
       </div>
     </div>

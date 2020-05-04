@@ -21,8 +21,8 @@
       "id": 7
     },
     {
-      "name": "test",
-      "colorId": 8,
+      "name": "work",
+      "colorId": 2,
       "id": 8
     }
   ],
@@ -60,13 +60,13 @@
     {
       "listId": 1,
       "text": "test",
-      "completed": false,
+      "completed": true,
       "id": 6
     },
     {
       "listId": 1,
       "text": "qweqwe",
-      "completed": false,
+      "completed": true,
       "id": 7
     },
     {
@@ -101,8 +101,8 @@
     },
     {
       "listId": 8,
-      "text": "test 1",
-      "completed": false,
+      "text": "поработать 1",
+      "completed": true,
       "id": 19
     }
   ],

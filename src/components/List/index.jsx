@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import { deleteMenuItem } from '../../api'
 
 import classNames from 'classnames'
 import Badge from '../Badge';
@@ -12,7 +12,7 @@ const List = ({ items, isRemovable, onClick, onRemove, onClickItem, activeItem }
 
     const beforeRemove = async ({ id, name }) => {
         if (window.confirm(`Вы действительно хотите удалить ${name}?`)) {
-            await axios.delete(`http://localhost:3001/lists/${id}`)
+            await deleteMenuItem(id)
             onRemove(id)
         }
     }

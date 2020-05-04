@@ -1,4 +1,6 @@
 .tasks {
+    position: relative;
+    overflow: hidden;
 
     &-list {
         & + .tasks-list {

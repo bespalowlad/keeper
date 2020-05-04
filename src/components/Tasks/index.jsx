@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { updateMenuTitle } from '../../api'
 
 import Task from './Task';
 
@@ -8,7 +8,7 @@ import './Tasks.scss';
 import EditSvg from '../../assets/images/edit.svg';
 import CreateTask from './CreateTask';
 
-const Tasks = ({ list, onEditTitleList, onCreateTask, onRemoveTask, onEditTask }) => {
+const Tasks = ({ list, onEditTitleList, onCreateTask, onRemoveTask, onEditTask, onComplete }) => {
     const [title, setTitle] = useState(list.name);
     const [editMode, setEditMode] = useState(false);
 
@@ -20,7 +20,7 @@ const Tasks = ({ list, onEditTitleList, onCreateTask, onRemoveTask, onEditTask }
         setEditMode(false);
 
         try {
-            await axios.patch(`http://localhost:3001/lists/${list.id}`, { name: title })
+            await updateMenuTitle(list.id, title);
             onEditTitleList(list.id, title);
         } catch (error) {
             alert('Уппс! Произошла ошибка')
@@ -47,15 +47,9 @@ const Tasks = ({ list, onEditTitleList, onCreateTask, onRemoveTask, onEditTask }
 
         <div className="tasks-body">
 
-            {/* {list.tasks && list.tasks.length === 0 && <h2 className="tasks-empty">Задачи отсутствуют</h2>}
-
-            {list.tasks && list.tasks.map(task => (
-                <Task key={task.id} onRemove={onRemoveTask} onEdit={onEditTask} {...task} />
-            ))} */}
-
             {list.tasks && list.tasks.length > 0 ? (
                 list.tasks.map(task => (
-                    <Task key={task.id} onRemove={onRemoveTask} onEdit={onEditTask} {...task} />
+                    <Task key={task.id} onRemove={onRemoveTask} onEdit={onEditTask} onComplete={onComplete} {...task} />
                 ))
             ) : (
                     <h2 className="tasks-empty">Задачи отсутствуют</h2>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { updateTaskText, removeTask, updateStatusTask } from '../../../api'
 
 import editSvg from '../../../assets/images/edit.svg';
 import removeSvg from '../../../assets/images/remove.svg';
 
 import './task.scss';
 
-const Task = ({ id, listId, text, completed, onRemove, onEdit }) => {
+const Task = ({ id, listId, text, completed, onRemove, onEdit, onComplete }) => {
     const [inputValue, setInputValue] = useState(text);
     const [editMode, setEditMode] = useState(false);
 
@@ -18,9 +18,7 @@ const Task = ({ id, listId, text, completed, onRemove, onEdit }) => {
         setEditMode(false);
 
         try {
-            await axios.patch(`http://localhost:3001/tasks/${id}`, {
-                text: inputValue
-            });
+            await updateTaskText(id, inputValue)
             onEdit(listId, id, inputValue);
         } catch (error) {
             alert('Уппс! Произошла ошибка')
@@ -33,8 +31,17 @@ const Task = ({ id, listId, text, completed, onRemove, onEdit }) => {
         }
 
         try {
-            await axios.delete(`http://localhost:3001/tasks/${id}`);
+            await removeTask(id);
             onRemove(listId, id);
+        } catch (error) {
+            alert('Уппс! Произошла ошибка')
+        }
+    }
+
+    const onCompleteHandler = async () => {
+        try {
+            await updateStatusTask(id, completed);
+            onComplete(listId, id);
         } catch (error) {
             alert('Уппс! Произошла ошибка')
         }
@@ -42,7 +49,12 @@ const Task = ({ id, listId, text, completed, onRemove, onEdit }) => {
 
     return (
         <div className="task">
-            <input id={`check-${id}`} type="checkbox" />
+            <input
+                id={`check-${id}`}
+                type="checkbox"
+                checked={completed}
+                onChange={onCompleteHandler}
+            />
 
             <label htmlFor={`check-${id}`} className="check">
                 <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
