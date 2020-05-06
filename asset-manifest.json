@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/keeper/static/css/main.4ae577bd.chunk.css",
+    "main.js": "/keeper/static/js/main.f7f0a866.chunk.js",
+    "main.js.map": "/keeper/static/js/main.f7f0a866.chunk.js.map",
+    "runtime-main.js": "/keeper/static/js/runtime-main.c0064e59.js",
+    "runtime-main.js.map": "/keeper/static/js/runtime-main.c0064e59.js.map",
+    "static/js/2.e51008e6.chunk.js": "/keeper/static/js/2.e51008e6.chunk.js",
+    "static/js/2.e51008e6.chunk.js.map": "/keeper/static/js/2.e51008e6.chunk.js.map",
+    "index.html": "/keeper/index.html",
+    "precache-manifest.575a012740c2da4e5a5314a7242ce79f.js": "/keeper/precache-manifest.575a012740c2da4e5a5314a7242ce79f.js",
+    "service-worker.js": "/keeper/service-worker.js",
+    "static/css/main.4ae577bd.chunk.css.map": "/keeper/static/css/main.4ae577bd.chunk.css.map",
+    "static/js/2.e51008e6.chunk.js.LICENSE.txt": "/keeper/static/js/2.e51008e6.chunk.js.LICENSE.txt",
+    "static/media/close.svg": "/keeper/static/media/close.14e2f379.svg",
+    "static/media/edit.svg": "/keeper/static/media/edit.93ca2630.svg",
+    "static/media/plus.svg": "/keeper/static/media/plus.ba9a0c8a.svg",
+    "static/media/remove.svg": "/keeper/static/media/remove.71708d87.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c0064e59.js",
+    "static/js/2.e51008e6.chunk.js",
+    "static/css/main.4ae577bd.chunk.css",
+    "static/js/main.f7f0a866.chunk.js"
+  ]
+}
