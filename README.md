@@ -1,4 +1,4 @@
-![alt text](https://github.com/bespalowlad/react_base_auth/blob/master/src/screenshots/keeper.png)
+![alt text](https://github.com/bespalowlad/keeper/blob/master/src/screenshots/keeper.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
