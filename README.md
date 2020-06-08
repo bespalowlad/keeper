@@ -1,6 +1,13 @@
+![alt text](https://github.com/bespalowlad/react_base_auth/blob/master/src/screenshots/keeper.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+At first start: 
+
+### `yarn backend`
 
 In the project directory, you can run:
 
